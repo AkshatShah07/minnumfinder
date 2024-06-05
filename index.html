@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title> Min Application Finder</title>
+        <style>
+            *{font-size: 40px;}
+            body{background-color:rgba(0, 0, 0, 0.493);}
+            .btn{background-color: chocolate; color: white; border-radius: 20px; margin-left: 50px;}
+            .btn:hover{color: blue;}
+        </style>
+    </head>
+<body>
+    <center>
+        <h1>Min Application</h1>
+        <form onsubmit="minfinder()">
+            <input type="number" step="any" placeholder="Enter Number" id="num1"/>
+            <br><br>
+            <input type="number" step="any" placeholder="Enter Number" id="num2"/>
+            <br><br>
+            <input type="submit" value="M1" class="btn"/>
+            <input type="submit" value="M2" class="btn"/>
+            <input type="submit" value="M3" class="btn"/>
+        </form>
+
+        <h2 id="msg">
+            <script>
+                function minfinder(){
+                    event.preventDefault()
+                    let num1 = document.getElementById("num1");
+                    let num2 = document.getElementById("num2");
+                    let msg = document.getElementById("msg");
+                    
+                    if (num1.value == "")
+                    {
+                        alert("You did not first enter number")
+                        msg.innerHTML = "";
+                        num1.focus();
+                        return;
+                    }
+                    if (num2.value == "")
+                    {
+                        alert("You did not second enter number")
+                        msg.innerHTML = "";
+                        num2.focus();
+                        return;
+                    }
+                    
+                    let ele = document.activeElement.value;
+                    let ans = "";
+                    let n1 = parseFloat(num1.value)
+                    let n2 = parseFloat(num2.value)
+
+                    if (ele=="M1")
+                    {
+                        ans = n1<n2 ? "min= "+n1 : "min= "+n2
+                        msg.innerHTML = "M1 --> " + ans;
+                    }
+
+                    else if (ele=="M2")
+                    {
+
+                        if (n1<n2)
+                            ans = "min =" +n1;
+                        else
+                            ans = "min = " + n2;
+                        msg.innerHTML = "M2 --> " + ans;
+                    }
+
+                    else if (ele=="M3")
+                    {
+                        function findMin(a, b) {
+                        return a < b ? a : b;
+                        }
+                    ans = "min = " + findMin(n1, n2);
+                    msg.innerHTML = "M3 --> " + ans;
+                    }
+                }
+            </script>
+        </h2>
+
+    <center>
+</body>
+</html>
